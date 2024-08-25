@@ -1,66 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Movie Rating API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a Laravel-based API for managing movies, users, and ratings. The API allows users to create, update, delete, and retrieve movie records, user accounts, and ratings for movies. It includes robust exception handling to provide informative error responses.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Features](#features)
+-[Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Database Seeding](#database-seeding)
+- [Configuration](#api-Configuration)
+- [Usage](#Usage)
+- [Movie Endpoints](#Movie Endpoints)
+- [User Endpoints](#User Endpoints)
+- [Rating Endpoints](#Rating Endpoints)
+- [Error Handling](#Error Handling)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Movies**: CRUD operations for movies.
+- **Users**: User management with unique email validation.
+- **Ratings**: Rate movies with optional reviews, including CRUD operations.
+- **Exception Handling**: Custom error responses for common issues like model not found, validation errors, and general exceptions.
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+To get started with the Laravel Movie Rating API, follow these steps:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/zeeii/movie-library.git
+    cd movie-library
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Install the dependencies using Composer**:
+    ```bash
+    composer install
+    ```
+3. **Install XAMPP**
 
-## Laravel Sponsors
+## Running the Application
+To run the application locally, use the following command:
+ ```bash
+   php artisan serve
+```
+The application will be available at http://localhost:8000
+## Database Seeding
+To populate the database with initial data, use the following command:
+```bash
+php artisan migrate --seed
+```
+This will create the necessary tables and seed the database with sample movies and users.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## Configuration
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+After setting up the environment variables in the `.env` file, ensure the following configurations:
 
-## Contributing
+- **Database Configuration**:
+  Make sure your `.env` file contains the correct database settings:
+  
+  ```plaintext
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=movie_library3
+DB_USERNAME=root
+DB_PASSWORD=
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Usage
+### Movie Endpoints
+Create Movie: POST /api/movies
+Retrieve All Movies: GET /api/movies
+Retrieve Movie by ID: GET /api/movies/{id}
+Update Movie: PUT /api/movies/{id}
+Delete Movie: DELETE /api/movies/{id}
+### User Endpoints
+Create User: POST /api/users
+Retrieve All Users: GET /api/users
+Retrieve User by ID: GET /api/users/{id}
+Update User: PUT /api/users/{id}
+Delete User: DELETE /api/users/{id}
+### Rating Endpoints
+Create Rating: POST /api/ratings
+Retrieve All Ratings: GET /api/ratings
+Retrieve Rating by ID: GET /api/ratings/{id}
+Update Rating: PUT /api/ratings/{id}
+Delete Rating: DELETE /api/ratings/{id}
+## Error Handling
+The API provides informative error responses for different scenarios:
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+404 Not Found: Returned when a model is not found.
+422 Validation Error: Returned when validation fails.
+500 Internal Server Error: Returned for general exceptions.
